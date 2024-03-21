@@ -42,6 +42,20 @@ async function show(req, res){
   }
 }
 
+async function update(req, res){
+  try {
+    const profile = await Profile.findByIdAndUpdate(
+      req.user.profile,
+      req.body,      
+      { new: true }
+    ).populate('readList')
+    res.status(201).json(profile)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 async function addReadList(req, res) {
   try {
     const profile = await Profile.findById(req.user.profile)
@@ -60,5 +74,6 @@ export {
   index, 
   addPhoto, 
   show,
+  update,
   addReadList,
 }
