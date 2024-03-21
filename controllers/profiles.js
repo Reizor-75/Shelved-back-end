@@ -31,11 +31,22 @@ async function addPhoto(req, res) {
   }
 }
 
+async function show(){
+  try {
+    const profile = await Profile.findById(req.params.profileId)
+      .populate('readList')
+      res.status(201).json(profile)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 async function addReadList(req, res) {
   try {
     const profile = await Profile.findById(req.user.profile)
     const book = await Book.findById(req.params.bookId)
-    
+
     profile.readList.push(book)
     await profile.save()
     res.status(201).json(profile)
@@ -48,5 +59,6 @@ async function addReadList(req, res) {
 export { 
   index, 
   addPhoto, 
+  show,
   addReadList,
 }
