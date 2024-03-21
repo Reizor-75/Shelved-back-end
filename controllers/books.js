@@ -19,7 +19,18 @@ async function create(req, res) {
   }
 }
 
+async function show(req, res){
+  try {
+    const book = await Book.findById(req.params.bookId)
+    res.status(201).json(book)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index,  
   create,
+  show,
 }

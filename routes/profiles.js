@@ -14,5 +14,4 @@ router.get('/show', checkAuth, profilesCtrl.show)
 router.put('/update', checkAuth, profilesCtrl.update)
 router.put('/:id/add-photo', checkAuth, profilesCtrl.addPhoto)
 
-
 export { router }
