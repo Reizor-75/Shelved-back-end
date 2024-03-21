@@ -10,6 +10,7 @@ import './config/database.js'
 
 // import routes
 import { router as profilesRouter } from './routes/profiles.js'
+import { router as bookRouter } from './routes/book.js'
 import { router as authRouter } from './routes/auth.js'
 
 // create the express app
@@ -23,6 +24,7 @@ app.use(formData.parse())
 
 // mount imported routes
 app.use('/api/profiles', profilesRouter)
+app.use('/api/book', bookRouter)
 app.use('/api/auth', authRouter)
 
 // handle 404 errors
