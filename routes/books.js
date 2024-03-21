@@ -10,5 +10,6 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, booksCtrl.index)
+router.post('/create', checkAuth, booksCtrl.create)
 
 export { router }
