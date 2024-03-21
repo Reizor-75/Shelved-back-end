@@ -12,5 +12,6 @@ router.use(decodeUserFromToken)
 router.get('/', checkAuth, booksCtrl.index)
 router.post('/create', checkAuth, booksCtrl.create)
 router.get('/:bookId', checkAuth, booksCtrl.show)
+router.put('/:bookId/update', checkAuth, booksCtrl.update)
 
 export { router }
