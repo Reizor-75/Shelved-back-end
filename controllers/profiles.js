@@ -1,5 +1,6 @@
 import { Profile } from '../models/profile.js'
 import { v2 as cloudinary } from 'cloudinary'
+import { Book } from '../models/book.js'
 
 async function index(req, res) {
   try {
@@ -30,4 +31,7 @@ async function addPhoto(req, res) {
   }
 }
 
-export { index, addPhoto }
+export { 
+  index, 
+  addPhoto, 
+}
