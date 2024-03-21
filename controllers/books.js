@@ -29,8 +29,23 @@ async function show(req, res){
   }
 }
 
+async function update(req, res){
+  try {
+    const book = await Book.findByIdAndUpdate(
+      req.params.bookId,
+      req.body,      
+      { new: true }
+    )
+    res.status(201).json(book)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index,  
   create,
   show,
+  update,
 }
