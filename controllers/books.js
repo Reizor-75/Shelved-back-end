@@ -63,7 +63,22 @@ async function createReview(req, res){
   }
 }
 
+async function updateReview(req, res){
+  try {
+    const book = await Book.findById(req.params.bookId)
+    const review = book.reviews.id(req.params.reviewId)
+    review.title = req.body.title
+    review.content = req.body.content
+    review.rating = req.body.rating
+    await review.save()
+    await book.save()
 
+    res.status(201).json(book)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
 
 export { 
   index,  
