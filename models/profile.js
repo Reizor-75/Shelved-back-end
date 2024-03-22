@@ -9,6 +9,15 @@ const profileSchema = new Schema({
     type: Schema.Types.ObjectId, 
     ref: 'Book'
   }],
+  wishList: [{
+    type: Schema.Types.ObjectId, 
+    ref: 'Book'
+  }],
+  role: Number,
+  following: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'Profile'
+  }]
 },{
   timestamps: true,
 })
