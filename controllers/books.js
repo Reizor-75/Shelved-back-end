@@ -48,7 +48,7 @@ async function update(req, res){
 
 async function createReview(req, res){
   try {
-    const book = await Book.create(req.body)
+    const book = await Book.findById(req.params.bookId)
     book.reviews.push(req.body)
     await book.save()
 
@@ -62,6 +62,8 @@ async function createReview(req, res){
     res.status(500).json(err)
   }
 }
+
+
 
 export { 
   index,  
