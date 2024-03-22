@@ -11,6 +11,7 @@ router.get('/:bookId', booksCtrl.show)
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.post('/create', checkAuthor, booksCtrl.create)
+router.post('/:bookId', checkAuth, booksCtrl.createReview)
 router.put('/:bookId/update', checkAuthor, booksCtrl.update)
 
 export { router }
