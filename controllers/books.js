@@ -86,4 +86,5 @@ export {
   show,
   update,
   createReview,
+  updateReview,
 }
