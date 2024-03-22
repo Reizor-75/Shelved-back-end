@@ -1,4 +1,5 @@
 import { Book } from '../models/book.js'
+import { Profile } from '../models/profile.js'
 
 async function index(req, res) {
   try {
@@ -9,6 +10,7 @@ async function index(req, res) {
     res.status(500).json(err)
   }
 }
+
 async function create(req, res) {
   try {
     const book = await Book.create(req.body)
@@ -22,6 +24,7 @@ async function create(req, res) {
 async function show(req, res){
   try {
     const book = await Book.findById(req.params.bookId)
+    .populate('reviews.reviwer')
     res.status(201).json(book)
   } catch (err) {
     console.log(err)
@@ -43,9 +46,27 @@ async function update(req, res){
   }
 }
 
+async function createReview(req, res){
+  try {
+    const book = await Book.create(req.body)
+    book.reviews.push(req.body)
+    await book.save()
+
+    const review = book.reviews[book.reviews.length - 1]
+    const profile = await Profile.findById(req.user.profile)
+    review.reviwer = profile
+
+    res.status(201).json(book)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index,  
   create,
   show,
   update,
+  createReview,
 }

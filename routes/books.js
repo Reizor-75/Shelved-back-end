@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
+import { decodeUserFromToken, checkAuth, checkAuthor } from '../middleware/auth.js'
 import * as booksCtrl from '../controllers/books.js'
 
 const router = Router()
@@ -10,7 +10,7 @@ router.get('/:bookId', booksCtrl.show)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.post('/create', checkAuth, booksCtrl.create)
-router.put('/:bookId/update', checkAuth, booksCtrl.update)
+router.post('/create', checkAuthor, booksCtrl.create)
+router.put('/:bookId/update', checkAuthor, booksCtrl.update)
 
 export { router }
