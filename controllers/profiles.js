@@ -68,7 +68,6 @@ async function deleteBookReadList(req, res){
   }
 }
 
-
 export { 
   index, 
   addPhoto, 
