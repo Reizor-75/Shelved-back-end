@@ -12,8 +12,9 @@ router.get('/:bookId', booksCtrl.show)
 router.use(decodeUserFromToken)
 router.post('/create', checkAuthor, booksCtrl.create)
 router.post('/:bookId', checkAuth, booksCtrl.createReview)
-router.put('/:bookId/:reviewId', checkAuth, booksCtrl.updateReview)
+router.put('/:bookId/readlist', checkAuth, booksCtrl.addReadList)
 router.put('/:bookId/update', checkAuthor, booksCtrl.update)
+router.put('/:bookId/:reviewId', checkAuth, booksCtrl.updateReview)
 router.delete('/:bookId/:reviewId', checkAuth, booksCtrl.deleteReview)
 
 export { router }
