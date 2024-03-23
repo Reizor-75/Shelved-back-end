@@ -107,6 +107,20 @@ async function addReadList(req, res) {
   }
 }
 
+async function addWishList(req, res) {
+  try {
+    const profile = await Profile.findById(req.user.profile)
+    const book = await Book.findById(req.params.bookId)
+
+    profile.wishList.push(book)
+    await profile.save()
+    res.status(201).json(profile)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index,  
   create,
@@ -116,4 +130,5 @@ export {
   updateReview,
   deleteReview,
   addReadList,
+  addWishList,
 }
