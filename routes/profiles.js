@@ -17,6 +17,7 @@ router.put('/:bookId', checkAuth, profilesCtrl.deleteBookReadList)
 router.put('/readlist/:bookId', checkAuth, profilesCtrl.deleteBookReadList)
 router.put('/wishlist/:bookId', checkAuth, profilesCtrl.deleteBookWishList)
 router.put('/wishlist/:bookId/updateList', checkAuth, profilesCtrl.moveBook)
+router.put('/following/:userId', checkAuth, profilesCtrl.removeFromFollowing)
 router.put('/:id/add-photo', checkAuth, profilesCtrl.addPhoto)
 
 export { router }
