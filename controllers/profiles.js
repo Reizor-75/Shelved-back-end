@@ -94,6 +94,20 @@ async function moveBook(req, res){
   }
 }
 
+async function addToFollowing(req, res){
+  try {
+    const profile = await Profile.findById(req.user.profile)
+    const newFollowing = await Profile.findById(req.params.userId)
+
+    profile.following.push(newFollowing)
+    await profile.save()
+    res.status(201).json(profile)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index, 
   addPhoto, 
@@ -102,4 +116,5 @@ export {
   deleteBookReadList,
   deleteBookWishList,
   moveBook,
+  addToFollowing,
 }
