@@ -80,6 +80,20 @@ async function deleteBookWishList(req, res){
   }
 }
 
+async function moveBook(req, res){
+  try {
+    const profile = await Profile.findById(req.user.profile)
+    const book = await Book.findById(req.params.bookId)
+    profile.wishList.remove({_id: req.params.bookId})
+    profile.readList.push(book)
+    await profile.save()
+    res.status(201).json(profile)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export { 
   index, 
   addPhoto, 
@@ -87,4 +101,5 @@ export {
   update,
   deleteBookReadList,
   deleteBookWishList,
+  moveBook,
 }
