@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const reviewSchema = new Schema({
-  reviwer: {
+  reviewer: {
     type: Schema.Types.ObjectId,
     ref: 'Profile'
   },

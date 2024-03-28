@@ -24,7 +24,7 @@ async function create(req, res) {
 async function show(req, res){
   try {
     const book = await Book.findById(req.params.bookId)
-    .populate('reviews.reviwer')
+    .populate('reviews.reviewer')
     res.status(201).json(book)
   } catch (err) {
     console.log(err)
