@@ -50,12 +50,13 @@ async function createReview(req, res){
   try {
     const book = await Book.findById(req.params.bookId)
     book.reviews.push(req.body)
-    await book.save()
 
     const review = book.reviews[book.reviews.length - 1]
     const profile = await Profile.findById(req.user.profile)
-    review.reviwer = profile
-
+    review.reviewer = profile
+    await review.save()
+    await book.save()
+    
     res.status(201).json(book)
   } catch (err) {
     console.log(err)
