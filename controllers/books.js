@@ -125,11 +125,10 @@ async function addWishList(req, res) {
 
 async function search(req, res) {
   try {
-    console.log(`${openLibURL}${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&sort=new&language=eng}`)
-    const apiResponse = await fetch(`${openLibURL}${req.body.catagory}=${req.body.searchStr.replaceAll(" ", "+")}&sort=new&language=eng}`)
+    const apiResponse = await fetch(`${openLibURL}${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&sort=new&language=eng`)
 
     const apiData = await apiResponse.json()
-    res.json(apiData)
+    res.json(apiData.docs)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
