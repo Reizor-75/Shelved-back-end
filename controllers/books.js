@@ -1,6 +1,6 @@
 import { Book } from '../models/book.js'
 import { Profile } from '../models/profile.js'
-const openLibURL = "https://openlibrary.org/search.json?"
+const openLibURL = "https://openlibrary.org/"
 
 async function index(req, res) {
   try {
@@ -24,9 +24,15 @@ async function create(req, res) {
 
 async function show(req, res){
   try {
-    const book = await Book.findById(req.params.bookId)
-    .populate('reviews.reviewer')
-    res.status(201).json(book)
+    console.log(`${openLibURL}books/${req.params.bookId}.json`)
+    const apiResponse = await fetch(`${openLibURL}books/${req.params.bookId}.json`)
+
+    const apiData = await apiResponse.json()
+    res.json(apiData)
+
+    // const book = await Book.findById(req.params.bookId)
+    // .populate('reviews.reviewer')
+    // res.status(201).json(book)
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
@@ -125,7 +131,7 @@ async function addWishList(req, res) {
 
 async function search(req, res) {
   try {
-    const apiResponse = await fetch(`${openLibURL}${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&sort=new&language=eng`)
+    const apiResponse = await fetch(`${openLibURL}search.json?${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&language=eng`)
 
     const apiData = await apiResponse.json()
     res.json(apiData.docs)
