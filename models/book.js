@@ -22,7 +22,7 @@ const bookSchema = new Schema({
     type: String,
     required: true
   },
-  author: [ {type: String, required: true} ],
+  authors: [ {type: String, required: true} ],
   firstPublished: Date,
   genre: [ {type: String} ],
   coverPhoto: String,

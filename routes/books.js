@@ -7,6 +7,7 @@ const router = Router()
 /*---------- Public Routes ----------*/
 router.get('/', booksCtrl.index)
 router.get('/:bookId', booksCtrl.show)
+router.post('/search', booksCtrl.search)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
