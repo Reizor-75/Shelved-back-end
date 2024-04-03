@@ -1,5 +1,6 @@
 import { Book } from '../models/book.js'
 import { Profile } from '../models/profile.js'
+const openLibURL = "https://openlibrary.org/search.json?"
 
 async function index(req, res) {
   try {
@@ -122,6 +123,19 @@ async function addWishList(req, res) {
   }
 }
 
+async function search(req, res) {
+  try {
+    console.log(`${openLibURL}${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&sort=new&language=eng}`)
+    const apiResponse = await fetch(`${openLibURL}${req.body.catagory}=${req.body.searchStr.replaceAll(" ", "+")}&sort=new&language=eng}`)
+
+    const apiData = await apiResponse.json()
+    res.json(apiData)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 export { 
   index,  
   create,
@@ -132,4 +146,5 @@ export {
   deleteReview,
   addReadList,
   addWishList,
+  search,
 }
