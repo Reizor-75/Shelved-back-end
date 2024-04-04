@@ -14,12 +14,16 @@ async function index(req, res) {
 
 async function create(req, res) {
   try {
-    console.log(req.body)
-    const book = await Book.create(req.body)    
-    const apiResponse = await fetch(`${openLibURL}books/${book.OLID}.json`)
-    book.description = apiResponse.description
-    book.save();
-    res.status(201).json(book)
+    const book = await Book.find({OLID:req.body.OLID})
+    if(!book.length){
+      const newbook = await Book.create(req.body)    
+      const apiResponse = await fetch(`${openLibURL}books/${newbook.OLID}.json`)
+      newbook.description = apiResponse.description
+      newbook.save();
+      console.log(newbook)
+      res.status(201).json(newbook)
+    }
+    res.status(201).json(book[0])
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
