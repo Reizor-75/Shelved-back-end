@@ -11,7 +11,7 @@ router.post('/search', booksCtrl.search)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.post('/create', checkAuthor, booksCtrl.create)
+router.post('/create', checkAuth, booksCtrl.create)
 router.post('/:bookId/review', checkAuth, booksCtrl.createReview)
 router.put('/:bookId/readlist', checkAuth, booksCtrl.addReadList)
 router.put('/:bookId/wishlist', checkAuth, booksCtrl.addWishList)

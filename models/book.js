@@ -31,6 +31,14 @@ const bookSchema = new Schema({
   firstPublished: Date,
   coverPhoto: String,
   reviews: [reviewSchema],
+  usersRead: {
+    type:Number,
+    default: 0
+  },
+  userWant: {
+    type:Number,
+    default: 0
+  },
 },{
   timestamps: true,
 })

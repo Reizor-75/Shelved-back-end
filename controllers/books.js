@@ -14,7 +14,11 @@ async function index(req, res) {
 
 async function create(req, res) {
   try {
-    const book = await Book.create(req.body)
+    console.log(req.body)
+    const book = await Book.create(req.body)    
+    const apiResponse = await fetch(`${openLibURL}books/${book.OLID}.json`)
+    book.description = apiResponse.description
+    book.save();
     res.status(201).json(book)
   } catch (err) {
     console.log(err)
@@ -24,7 +28,6 @@ async function create(req, res) {
 
 async function show(req, res){
   try {
-    console.log(`${openLibURL}books/${req.params.bookId}.json`)
     const apiResponse = await fetch(`${openLibURL}books/${req.params.bookId}.json`)
 
     const apiData = await apiResponse.json()
@@ -131,7 +134,7 @@ async function addWishList(req, res) {
 
 async function search(req, res) {
   try {
-    const apiResponse = await fetch(`${openLibURL}search.json?${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&fields=key,title,author_name,cover_edition_key,editions,editions.key,editions.title,editions.ebook_access,editions.language&lang=eng`)
+    const apiResponse = await fetch(`${openLibURL}search.json?${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&fields=key,title,author_name,cover_edition_key,first_publish_year,editions,editions.key,editions.title,editions.language&lang=eng`)
 
     const apiData = await apiResponse.json()
     res.json(apiData.docs)
