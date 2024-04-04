@@ -18,13 +18,17 @@ const reviewSchema = new Schema({
 })
 
 const bookSchema = new Schema({
+  OLID: {
+    type: String,
+    required: true
+  },
   title: { 
     type: String,
     required: true
   },
   authors: [ {type: String, required: true} ],
+  description: String,
   firstPublished: Date,
-  genre: [ {type: String} ],
   coverPhoto: String,
   reviews: [reviewSchema],
 },{

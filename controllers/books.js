@@ -131,7 +131,7 @@ async function addWishList(req, res) {
 
 async function search(req, res) {
   try {
-    const apiResponse = await fetch(`${openLibURL}search.json?${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&language=eng`)
+    const apiResponse = await fetch(`${openLibURL}search.json?${req.body.category}=${req.body.searchStr.replaceAll(" ", "+")}&lang=eng`)
 
     const apiData = await apiResponse.json()
     res.json(apiData.docs)
