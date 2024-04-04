@@ -17,10 +17,10 @@ async function create(req, res) {
     const book = await Book.find({OLID:req.body.OLID})
     if(!book.length){
       const newbook = await Book.create(req.body)    
-      const apiResponse = await fetch(`${openLibURL}books/${newbook.OLID}.json`)
-      newbook.description = apiResponse.description
-      newbook.save();
-      console.log(newbook)
+      const apiResponse = await fetch(`${openLibURL}works/${newbook.OLID}.json`)
+      const apiData = await apiResponse.json()
+      newbook.description = apiData.description
+      newbook.save()
       res.status(201).json(newbook)
     }
     res.status(201).json(book[0])
@@ -32,14 +32,14 @@ async function create(req, res) {
 
 async function show(req, res){
   try {
-    const apiResponse = await fetch(`${openLibURL}books/${req.params.bookId}.json`)
+    // const apiResponse = await fetch(`${openLibURL}books/${req.params.bookId}.json`)
 
-    const apiData = await apiResponse.json()
-    res.json(apiData)
+    // const apiData = await apiResponse.json()
+    // res.json(apiData)
 
-    // const book = await Book.findById(req.params.bookId)
-    // .populate('reviews.reviewer')
-    // res.status(201).json(book)
+    const book = await Book.findById(req.params.bookId)
+    .populate('reviews.reviewer')
+    res.status(201).json(book)
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
