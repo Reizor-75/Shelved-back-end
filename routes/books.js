@@ -8,10 +8,10 @@ const router = Router()
 router.get('/', booksCtrl.index)
 router.get('/:bookId', booksCtrl.show)
 router.post('/search', booksCtrl.search)
+router.post('/create', booksCtrl.create)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.post('/create', checkAuth, booksCtrl.create)
 router.post('/:bookId/review', checkAuth, booksCtrl.createReview)
 router.put('/:bookId/readlist', checkAuth, booksCtrl.addReadList)
 router.put('/:bookId/wishlist', checkAuth, booksCtrl.addWishList)

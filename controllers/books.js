@@ -19,8 +19,9 @@ async function create(req, res) {
       const newbook = await Book.create(req.body)    
       const apiResponse = await fetch(`${openLibURL}works/${newbook.OLID}.json`)
       const apiData = await apiResponse.json()
-      newbook.description = apiData.description
+      apiData.description.value ? newbook.description = apiData.description.value : newbook.description = apiData.description
       newbook.save()
+      console.log("🚨"+ newbook)
       res.status(201).json(newbook)
     }
     res.status(201).json(book[0])
