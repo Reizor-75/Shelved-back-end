@@ -21,7 +21,6 @@ async function create(req, res) {
       const apiData = await apiResponse.json()
       apiData.description.value ? newbook.description = apiData.description.value : newbook.description = apiData.description
       newbook.save()
-      console.log("🚨"+ newbook)
       res.status(201).json(newbook)
     }
     res.status(201).json(book[0])
@@ -86,7 +85,6 @@ async function updateReview(req, res){
     review.title = req.body.title
     review.content = req.body.content
     review.rating = req.body.rating
-    await review.save()
     await book.save()
 
     res.status(201).json(book)

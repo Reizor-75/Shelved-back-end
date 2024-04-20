@@ -48,7 +48,7 @@ async function update(req, res){
       req.user.profile,
       req.body,      
       { new: true }
-    ).populate('readList')
+    )
     res.status(201).json(profile)
   } catch (err) {
     console.log(err)
