@@ -80,7 +80,7 @@ async function createReview(req, res){
 
 async function updateReview(req, res){
   try {
-    const book = await Book.findById(req.params.bookId)
+    const book = await Book.findById(req.params.bookId).populate('reviews.reviewer')
     const review = book.reviews.id(req.params.reviewId)
     review.title = req.body.title
     review.content = req.body.content
