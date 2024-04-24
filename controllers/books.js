@@ -148,7 +148,14 @@ async function search(req, res) {
 }
 
 async function recentReleases(req, res){
-
+  try {
+    const books = await Book.find({}).sort({firstPublished:-1})
+    .limit(10)
+    res.json(books)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
 }
 
 export { 
