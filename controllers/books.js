@@ -147,6 +147,10 @@ async function search(req, res) {
   }
 }
 
+async function recentReleases(req, res){
+
+}
+
 export { 
   index,  
   create,
@@ -158,4 +162,5 @@ export {
   addReadList,
   addWishList,
   search,
+  recentReleases,
 }
