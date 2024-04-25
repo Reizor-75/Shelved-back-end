@@ -59,6 +59,9 @@ async function update(req, res){
 async function deleteBookReadList(req, res){
   try {
     const profile = await Profile.findById(req.user.profile)
+    const book = await Book.findById(req.params.bookId)
+    book.readCount-=1
+    book.save()
     profile.readList.remove({_id: req.params.bookId})
     await profile.save()
     res.status(201).json(profile)
