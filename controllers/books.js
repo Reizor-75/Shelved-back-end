@@ -126,7 +126,8 @@ async function addWishList(req, res) {
   try {
     const profile = await Profile.findById(req.user.profile)
     const book = await Book.findById(req.params.bookId)
-
+    book.wishCount+=1
+    await book.save()
     profile.wishList.push(book)
     await profile.save()
     res.status(201).json(profile)
