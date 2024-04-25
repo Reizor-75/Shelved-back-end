@@ -31,11 +31,11 @@ const bookSchema = new Schema({
   firstPublished: Date,
   coverPhoto: String,
   reviews: [reviewSchema],
-  usersRead: {
+  readCount: {
     type:Number,
     default: 0
   },
-  userWant: {
+  wantCount: {
     type:Number,
     default: 0
   },

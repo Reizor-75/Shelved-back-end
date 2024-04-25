@@ -111,7 +111,8 @@ async function addReadList(req, res) {
   try {
     const profile = await Profile.findById(req.user.profile)
     const book = await Book.findById(req.params.bookId)
-
+    book.readCount+=1
+    await book.save()
     profile.readList.push(book)
     await profile.save()
     res.status(201).json(profile)
