@@ -73,7 +73,10 @@ async function deleteBookReadList(req, res){
 
 async function deleteBookWishList(req, res){
   try {
-    const profile = await Profile.findById(req.user.profile)
+    const profile = await Profile.findById(req.user.profile)    
+    const book = await Book.findById(req.params.bookId)
+    book.wishCount-=1
+    book.save()
     profile.wishList.remove({_id: req.params.bookId})
     await profile.save()
     res.status(201).json(profile)
