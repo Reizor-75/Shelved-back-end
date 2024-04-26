@@ -151,7 +151,18 @@ async function search(req, res) {
 
 async function recentReleases(req, res){
   try {
-    const books = await Book.find({}).sort({firstPublished:-1})
+    const books = await Book.find({}).sort({firstPublished:-1, title: 'asc'})
+    .limit(10)
+    res.json(books)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
+async function mostRead(req, res){
+  try {
+    const books = await Book.find({}).sort({readCount: -1, title: 'asc' })
     .limit(10)
     res.json(books)
   } catch (err) {
@@ -172,4 +183,5 @@ export {
   addWishList,
   search,
   recentReleases,
+  mostRead,
 }
