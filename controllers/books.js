@@ -4,7 +4,7 @@ const openLibURL = "https://openlibrary.org/"
 
 async function index(req, res) {
   try {
-    const books = await Book.find({})
+    const books = await Book.find({}).sort({title: 'asc'})
     res.json(books)
   } catch (err) {
     console.log(err)
@@ -38,7 +38,7 @@ async function show(req, res){
     // res.json(apiData)
 
     const book = await Book.findById(req.params.bookId)
-    .populate('reviews.reviewer')
+    .populate(['reviews.reviewer'])
     res.status(201).json(book)
   } catch (err) {
     console.log(err)
@@ -80,7 +80,7 @@ async function createReview(req, res){
 
 async function updateReview(req, res){
   try {
-    const book = await Book.findById(req.params.bookId).populate('reviews.reviewer')
+    const book = await Book.findById(req.params.bookId).populate(['reviews.reviewer'])
     const review = book.reviews.id(req.params.reviewId)
     review.title = req.body.title
     review.content = req.body.content
