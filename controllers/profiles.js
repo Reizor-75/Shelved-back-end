@@ -126,6 +126,8 @@ async function removeFromFollowing(req, res){
   }
 }
 
+
+
 export { 
   index, 
   addPhoto, 
