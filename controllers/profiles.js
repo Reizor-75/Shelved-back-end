@@ -34,7 +34,7 @@ async function addPhoto(req, res) {
 async function show(req, res){
   try {
     const profile = await Profile.findById(req.params.userId)
-      .populate(['readList', 'wishList'])
+      .populate(['readList', 'wishList','following'])
     res.status(201).json(profile)
   } catch (err) {
     console.log(err)
