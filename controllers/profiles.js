@@ -103,8 +103,7 @@ async function moveBook(req, res){
 async function addToFollowing(req, res){
   try {
     const profile = await Profile.findById(req.user.profile)
-    const newFollowing = await Profile.findById(req.params.userId)
-
+    const newFollowing = await Profile.findById(req.params.profileId)
     profile.following.push(newFollowing)
     await profile.save()
     res.status(201).json(profile)
