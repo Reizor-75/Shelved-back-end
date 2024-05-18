@@ -4,7 +4,7 @@ const openLibURL = "https://openlibrary.org/"
 
 async function index(req, res) {
   try {
-    const books = await Book.find({}).sort({title: 'asc'})
+    const books = await Book.find({}).sort({firstPublished:-1, title: 'asc'})
     res.json(books)
   } catch (err) {
     console.log(err)
