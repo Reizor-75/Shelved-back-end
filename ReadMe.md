@@ -1,13 +1,17 @@
 # <img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/e9e1dd75a41d54631d6e9629aaede3adae1d26ec/src/assets/Shelved_Logo_V2.svg" alt="Shelved Icon" width="30"/>Shelved - Back End
 
+**Shelved** is a book review application made using React on the front end and JavaScript on the back end. Users come to **Shelved** to look into books they are interested in as well as books they've read before. User are encourage to rate and review books they've read to create discourse amongst all users.
+
+Users can track novels to two lists: Favorites and Future Reads. With these lists, users can express their reading preferences to potiental followers. 
+
 This is a MERN Stack application that includes JWT Authentication.
 
 Read more about [Shelved - Front End](https://github.com/Reizor-75/Shelved-front-end)
 
 ## Getting Started ✅
-🌐[Try Shelved!](https://trello.com/b/mHVSYVS2/shelved)
+🌐[Try Shelved!]()
 
-🗒️[Planning Materials](https://trello.com/b/m9fyUYR0/michelle-linares-noted)
+🗒️[Planning Materials](https://trello.com/b/mHVSYVS2/shelved)
 
 ## Attributions 📣
 Shelved uses [Open Library API](https://openlibrary.org/dev/docs/restful_api) to search and populate its database for users to interact with.
