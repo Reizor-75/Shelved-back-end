@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for shelved-back-end on 2024-05-30T18:02:13-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'shelved-back-end'
+primary_region = 'ewr'
+
+[env]
+  PORT = "8080"
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
