@@ -9,7 +9,7 @@ This is a MERN Stack application that includes JWT Authentication.
 Read more about [Shelved - Front End](https://github.com/Reizor-75/Shelved-front-end)
 
 ## Getting Started ✅
-🌐[Try Shelved!]()
+🌐[Try Shelved!](https://shelved.netlify.app/)
 
 🗒️[Planning Materials](https://trello.com/b/mHVSYVS2/shelved)
 
