@@ -1,6 +1,6 @@
-# <img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/e9e1dd75a41d54631d6e9629aaede3adae1d26ec/src/assets/Shelved_Logo_V6.svg" alt="Shelved Icon" width="30"/>Shelved - Back End
+# <img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/bf02f7f98453ed5210265f379d061676695a0c03/src/assets/Shelved_Logo_V6.svg" alt="Shelved Icon" width="30"/>Shelved - Back End
 
-<img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/e9e1dd75a41d54631d6e9629aaede3adae1d26ec/src/assets/Landing.png" alt="Landing Page" height="450"/><img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/e9e1dd75a41d54631d6e9629aaede3adae1d26ec/src/assets/Mobile_catalog.png" alt="Landing Page" height="450"/>
+<img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/main/src/assets/Landing.png" alt="Landing Page" height="450"/><img src="https://raw.githubusercontent.com/Reizor-75/Shelved-front-end/main/src/assets/Mobile_catalog.png" alt="Landing Page" height="450"/>
 
 **Shelved** is a book review application made using React on the front end and JavaScript on the back end. Users come to **Shelved** to look into books they are interested in as well as books they've read before. User are encourage to rate and review books they've read to create discourse amongst all users.
 
